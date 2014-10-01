@@ -1,5 +1,6 @@
 /* This is all working 
 By Rabia Akhtar and Remi Moon */ 
+public class lab{
 
 public boolean nearHundred(int n) {
   if (Math.abs(100 - n) <= 10) {
@@ -46,4 +47,5 @@ public boolean lastDigit(int a, int b, int c) {
   else {
   return false ;
   }
+}
 }

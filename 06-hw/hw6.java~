@@ -1,0 +1,16 @@
+public class hw6 {
+
+public String frontTimes(String str, int n) {
+  if (str.length() < 3) {
+  String front= str;
+  } else {
+  String front = str.substring (0,3);
+  }
+  int a = 0;
+  while (a<n){
+  return front;
+  a=a+1;
+
+  }
+}
+}
