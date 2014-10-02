@@ -43,12 +43,12 @@ s=s+"\n"
 return s
     */
 
-    public String tri2(int h){
+    public String tri2(int height){
 	String s = "";
 	int a = 1;
-	while (h>0){
+	while (height>0){
 	    int stars = 1;
-	    int spaces = h-b;
+	    int spaces = height-b;
 	    while (spaces > 0){
 		    s += " ";
 		    spaces --;
@@ -59,8 +59,23 @@ return s
 		}
 	    a++;
 	    s=s+ "\n";
-	    h--;
+	    height--;
 	}
        return s;
     }
+    /*
+int h;
+int i;
+String s = "";
+for (h=0;h<=height;h++){
+for (i=0;i<height-h;i++){
+s=s+".";
+}
+for (i=0; i<h;i++){
+
+s=s+"\n"
+}
+return s;
+}
+    */
 }	   
