@@ -15,6 +15,8 @@ public class Shapes {
 
 	return s;
     }
+   
+   
 
     public String tri1(int h) {
 	String s = "";
@@ -30,6 +32,16 @@ public class Shapes {
 	    h--;
 	}       return s;
     }
+    /*
+ int i,j;
+for (i=0;i<h;i++){
+for (j=0; j<=1; j++){
+s=s+"*"
+}
+s=s+"\n"
+}
+return s
+    */
 
     public String tri2(int h){
 	String s = "";
