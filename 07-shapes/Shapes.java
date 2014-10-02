@@ -35,15 +35,15 @@ public class Shapes {
 	String s = "";
 	int a = 1;
 	while (h>0){
-	    int b = 1;
-	    int c = h-b;
-	    while (c > 0){
+	    int stars = 1;
+	    int spaces = h-b;
+	    while (spaces > 0){
 		    s += " ";
-		    c --;
+		    spaces --;
 		}
-	    while (b <= a){
+	    while (stars <= a){
 		    s += "*";
-		    b++;
+		    stars++;
 		}
 	    a++;
 	    s=s+ "\n";
