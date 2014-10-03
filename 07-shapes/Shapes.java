@@ -84,7 +84,7 @@ return s;
 	String s="";
 	int row,spaces,stars;
 	// For row n, there are 1 + 2(n-1) stars
-	// For row n, there are a - n
+	// For row n, there are h - n
 	for (row = 1; row <= h; row++){
 	    for (spaces=h-row; spaces>0; spaces--){
 		s=s+" ";
@@ -101,11 +101,12 @@ return s;
     }
     //diamond doesn't work with numbers beside 5
     public String diamond(int h) {
-	String s="";
-	int row,spaces,stars;
 
-	for (row = 1; row <=h; row++){
-	    if (row <= (h/2)+1){
+	String s= tri3(h-(h/2));
+	    //	String s="";
+	int row;
+	for (row = h; row>=0; row--){
+	    /* if (row <= (h/2)+1){
 	    for (spaces=h-row-2; spaces>0; spaces--){
 		s=s+" ";
 	    }
@@ -113,17 +114,23 @@ return s;
 		s=s+"*";
         
 	    }	s+="\n";
-	    } else {
+	    } else { 
 		for (spaces=(row-(h/2)-1); spaces>0; spaces--){
 		s=s+" ";
 	    }
 	        for (stars=(2 * (h-row)+1); stars>0; stars--){
 		s=s+"*";
 		}
-		s+="\n";}
+		s+="\n";} */
+	    for (int i=0; i< h-row-1; i++){
+		s=s+" ";
+	    }
+	    for (int i=0; i<(2*row)+1; i++){
+		s=s+"*";
+	    }
+	    s= s+ "\n";
 	}
-	    
-	return s;
+	    	return s;
     }
 
 
