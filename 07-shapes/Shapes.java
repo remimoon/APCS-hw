@@ -99,7 +99,7 @@ return s;
 	
 	return s;
     }
-
+    //diamond doesn't work with numbers beside 5
     public String diamond(int h) {
 	String s="";
 	int row,spaces,stars;
