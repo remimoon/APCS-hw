@@ -99,13 +99,12 @@ return s;
 	
 	return s;
     }
-    //diamond doesn't work with numbers beside 5
     public String diamond(int h) {
 
 	String s= tri3(h-(h/2));
 	    //	String s="";
 	int row;
-	for (row = h; row>=0; row--){
+	for (row =(h-(h/2)-1); row>=0; row--){
 	    /* if (row <= (h/2)+1){
 	    for (spaces=h-row-2; spaces>0; spaces--){
 		s=s+" ";
@@ -122,10 +121,10 @@ return s;
 		s=s+"*";
 		}
 		s+="\n";} */
-	    for (int i=0; i< h-row-1; i++){
+	    for (int i=0; i<h-row-(h/2); i++){
 		s=s+" ";
 	    }
-	    for (int i=0; i<(2*row)+1; i++){
+	    for (int i=0; i<(2*row)-1; i++){
 		s=s+"*";
 	    }
 	    s= s+ "\n";
