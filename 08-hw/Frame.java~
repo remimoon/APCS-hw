@@ -1,0 +1,22 @@
+public class Frame {
+    public String frame (int r, int c){
+	String s = "";
+	int row;
+	for (row=0;row >= r; row++){
+	    if (row = 0 || row = r){
+		int i = 0;
+		while (i < r){
+		    s=s+"*";
+		}
+		s+="\n";
+	    }else {
+		s=s+"*";
+		int a=0;
+		while (a < (c-2)){
+		    s=s+ " ";
+		}
+		s+="\n";
+	    }
+	}
+    }
+}
