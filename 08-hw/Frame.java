@@ -1,28 +1,29 @@
 public class Frame {
-    //frame doesn't work :(
+       //frame works updated on 10/9
+    // took 15 min starting from scratch
      public String frame (int r, int c){
-	String s = "";
-	int row;
-	for (row=1;row<r; row++){
-	    if (row == 1 || row == (r-1)){
-		int i = 0;
-		while (i < r){
-		    s=s+"*";
-		    i++;
-		}
-		s+="\n";
-	    }else {
-		s=s+"*";
-		int a=0;
-		while (a < (c-2)){
-		    s=s+ " ";
-		}
-		s=s+"*";
-		s+="\n";
-	    }
-	}
-	return s;
-    } 
+	 String s = "";
+	 for (int row=0;row<r;row++){
+	     if (row==0 || row == (r-1)) {
+		 for (int a=0;a<c;a++){
+		     s+= "*";
+		 }
+		 s+="\n";
+	     }else{
+		 for (int a=0;a<c;a++){
+		     if (a==0||a==(c-1)){
+			 s+="*";
+		     }else {
+			 s+=" ";
+		     }
+		 }
+		 s+="\n";
+	     }
+	 }
+	 
+	 return s;
+     }
+
    
     //WORKS 10 min
 public String stringSplosion(String str) {
