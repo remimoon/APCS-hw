@@ -107,7 +107,7 @@ public class Driver {
 		    else if(d == 2){
 			n.starCombo(c);
 			pause(1000);
-			System.out.println("\nYou have attacked with star combo!");
+			System.out.println("\nYou have been attacked with star combo!");
 		    }
 		    else {
 			n.katanaHit(c);
