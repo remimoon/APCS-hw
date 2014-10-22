@@ -14,3 +14,6 @@ PRANAB ISLAM — Cowboy.java
 DALTON WU — Basechar.java
 
 REMI MOON — Ninja.java
+
+Lick Wounds- increases Health
+Chill- increases Energy
