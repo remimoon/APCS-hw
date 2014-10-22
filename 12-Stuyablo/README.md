@@ -7,7 +7,7 @@ Pd. 2 Mr. Z group 7
 
 Project Assignments:
 
-*************TIFFANY (XIUZHEN) LEI — Driver.java
+TIFFANY (XIUZHEN) LEI — Driver.java
 
 PRANAB ISLAM — Cowboy.java
 
