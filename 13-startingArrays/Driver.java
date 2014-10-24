@@ -7,11 +7,9 @@ public class Driver{
       int[] front2;
       front2 = new int[2];
       if (nums.length < 2) {
-
 	  return nums;
 	}
 	else{
-	
 	    front2[0] = nums[0];
 	    front2[1] = nums[1];
 	    return front2;  
