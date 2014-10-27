@@ -1,8 +1,7 @@
 
-import java.util.*;
-
 public class Driver{
 
+    //worked on codingbat but returns this weird thing
   public static int[] frontPiece(int[] nums) {
       int[] front2;
       front2 = new int[2];
