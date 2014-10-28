@@ -17,7 +17,7 @@ public Arraystuff(int[] a) {
     //code keeps saying variable x might not be intialized, not sure why
 	
 public int maxVal (){
-    int x = a[0]
+    int x = a[0];
     for (int i = 0; i < a.length; i++){
         if (a[i] > x ){
 	    x = a[i];
@@ -41,6 +41,14 @@ public int find (int n){
     return x;
 }
 
+    public int freq(int n){
+	int times = 0;
+	for (int i = 0; i < a.length; i++){
+	    if (a[i] == a[n]){
+		times += 1;
+	    }
+	}
+	return times;
 
 }
 
