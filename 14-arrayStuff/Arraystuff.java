@@ -52,4 +52,22 @@ public int find (int n){
 
 }
 
+public int sum67(int[] nums) {
+  int output = 0;
+  boolean x = True;
+  for (int i = 0; i < nums.length; i++){
+  if (nums[i] == 6) {
+  x = False;
+  } else {
+ if (nums[i] == 7) {
+ x = True;
+ }
+ }
+ if ( x = True) {
+ output += ;
+ }
+  
+  
+}
+
 
