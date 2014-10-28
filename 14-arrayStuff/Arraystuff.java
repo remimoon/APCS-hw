@@ -1,41 +1,49 @@
 import java.util.*;
 
 public class  Arraystuff {
-  public Arraystuff(int n){
-	rnd = new Random();
-	a = new int[n];
-	for (int i=0; i<a.length;i++){
-	    a[i] = 75+rnd.nextInt(76);
-	}
+    private int[] a;
+
+public Arraystuff(int[] a) {
+	this.a = a;
     }
 
-    public Arraystuff(){
-	this(100);
-    }
+    /*   public Arraystuff(){
+	this.n = n;
+	} */
     
-
-    /*--------------------- Methods --------------------*/ 
-
-    public String toString(){
-	String s = "";
-	for (int i = 0; i < a.length; i++) {
-	    s = s + a[i]+", ";
-	}
-	return s;}
-    
-    /*--------------------- Main --------------------*/ 
-
-    public static void main(String[] args) {
-	Arraystuff as = new Arraystuff();
-	System.out.println(as);
-
-
-
 	//  int find(n) - returns the index of the first occurence of n in the array or -1 if n isn't in the array.
 	// int maxVal() - return the largest value in the array
 
-
+    //code keeps saying variable x might not be intialized, not sure why
 	
-    }
+public int maxVal (){
+    int x;
+    for (int i = 0; i < a.length; i++){
+        if (a[i] >  a[i+1] ){
+	    x = a[i];
+	}else {
+	   x  = a[i+1];
+	}
+  }  
+    return x;
     
 }
+
+
+
+public int find (int n){
+    int x;
+    for (int i = 0; i < a.length; i++){
+        if (a[i] == n ){
+	    x=i;
+	}else{
+	    x=-1;
+	}  
+ }
+    return x;
+}
+
+
+}
+
+
