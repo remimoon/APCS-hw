@@ -17,12 +17,10 @@ public Arraystuff(int[] a) {
     //code keeps saying variable x might not be intialized, not sure why
 	
 public int maxVal (){
-    int x;
+    int x = a[0]
     for (int i = 0; i < a.length; i++){
-        if (a[i] >  a[i+1] ){
+        if (a[i] > x ){
 	    x = a[i];
-	}else {
-	   x  = a[i+1];
 	}
   }  
     return x;
@@ -32,14 +30,13 @@ public int maxVal (){
 
 
 public int find (int n){
-    int x;
+    int x = -1;
     for (int i = 0; i < a.length; i++){
         if (a[i] == n ){
 	    x=i;
-	}else{
-	    x=-1;
+	    break;
 	}  
- }
+    }
     return x;
 }
 
