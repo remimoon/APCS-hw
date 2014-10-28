@@ -22,6 +22,7 @@ public int maxVal (){
         if (a[i] > x ){
 	    x = a[i];
 	}
+	break;
   }  
     return x;
     
@@ -34,8 +35,8 @@ public int find (int n){
     for (int i = 0; i < a.length; i++){
         if (a[i] == n ){
 	    x=i;
-	    break;
 	}  
+	break;
     }
     return x;
 }
