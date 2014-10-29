@@ -1,0 +1,45 @@
+SOO before we had all this terrible getStats, but with arrays we can just use index's to get stuff and it's more compact and neat then having to find the nth comma and all that crap
+
+
+compare 
+
+ public void setStats(int dex, int spd, int str, int wis) {
+        this.dex = dex;
+        this.spd = spd;
+        this.str = str;
+        this.wis = wis;
+    }
+    public String getStats() {
+        return this.dex + ","
+             + this.spd + ","
+             + this.str + ","
+             + this.wis;
+    }
+    public int getStat(String statName) {
+        statName = statName.toLowerCase();
+        if(statName.equals("dex")) return this.dex;
+        if(statName.equals("spd")) return this.spd;
+        if(statName.equals("str")) return this.str;
+        if(statName.equals("wis")) return this.wis;
+        else return -1;
+    }
+
+to 
+
+ public void setStats(int[] stats) {
+        for(int i=0; i<this.stats.length; i++) {
+            this.stats[i] = stats[i];
+        }
+    }
+    public int[] getStats() {
+        return stats;
+    }
+
+in driver this could also be helpful with the attacks and stuff, we could have one array for the attacks and one array for the damage.
+
+things we can implement: 
+inventory
+
+
+
+
