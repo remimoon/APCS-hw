@@ -37,14 +37,28 @@ public boolean more14(int[] nums) {
     } 
 }
 
+public boolean tripleUp(int[] nums) {
+    if (nums.length < 3){
+	return false;
+    }
+    for (int i = 0; i < nums.length-2; i++){
+	int first = nums[i];
+	int second = nums[i+1];
+	int third = nums[i+2];
+	if ( (first+1==second) && (second+1==third) ) {
+	    return true;
+	}
+    }
+    return false;
+}
+
 public int[] seriesUp(int n) {
 	int place=0;
 	int[] s = new int[n*(n+1)/2];
 	for(int i=0; i<=n; i++){
 	    for(int j=1; j<=i; j++){
 		s[place] = j;
-		place += 1;
-	    }
+		place += 1	    }
 	}
 	return s;
     }
@@ -57,3 +71,34 @@ maxmirror??? very confused
 	for(int i=0; i<nums.length; i++){
 	    for(int x=i+1; x<nums.length; x++){
 		if(nums[i]==nums[x]){
+		    output ++;
+		}
+	    }
+	}
+	return output;
+}
+
+public boolean canBalance(int[] nums) {
+    int first = 0;
+    int sum = 0;
+
+    for (int i = 0; i < nums.length; i++){
+	sum += nums[i];
+    }
+
+    int half = (sum)/2;
+
+    if (sum % 2 != 0){
+	return false;
+
+    } else {
+    
+    for (int i = 0; first < half; i++){
+	first += nums[i];
+	if (first == half){
+	    return true;
+	}
+    }
+    return false;
+    }
+}
