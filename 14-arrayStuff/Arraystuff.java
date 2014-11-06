@@ -51,8 +51,7 @@ public int find (int n){
 	return times;
 
 }
-
-
+  
 }
 
 
