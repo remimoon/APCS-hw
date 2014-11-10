@@ -1,0 +1,14 @@
+How did you handle
+1)adding way past the end
+2)getting or setting an index that isn't there
+
+try {
+whatever code you want to try
+} catch (parameter){
+System.out.println(",rnawn");
+
+try { 
+ee.etest(11);
+System.out.println("kjdasdnj")
+} catch (Exception e) {
+System.out.println("ljwrwj");
