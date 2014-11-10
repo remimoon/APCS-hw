@@ -28,7 +28,25 @@ public class Sarray {
     public void  add(int index, int i){
         // adds item i  at index, shifting everything down as needed.
         // also grows as needed
-	
+	if (data.length > size()){
+	    int[]old = int[data.length];
+	    old[]=data[];
+	    data[index] = i;
+	    for (int a = 1; a < old.length - index; a++;){
+		data[index + a] = old[index + a];
+	    }
+	}else {
+	    int[] added = new int[data.length+1];
+	    for (int b = 0; index < data.index; b++){
+		added[b] = data[b];
+	    }
+	    data[index]=i;
+	    for (int c = index+ 1; c < data.length; c++){
+	    added[c] = data[c-1];
+	    }
+	}
+	return true;
+	}
     }
 
     public int size() {
