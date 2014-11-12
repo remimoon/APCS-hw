@@ -9,6 +9,6 @@ System.out.println(",rnawn");
 
 try { 
 ee.etest(11);
-System.out.println("kjdasdnj")
+System.out.println("kjdasdnj");
 } catch (Exception e) {
 System.out.println("ljwrwj");
