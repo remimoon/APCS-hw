@@ -19,14 +19,14 @@ public class Driver {
 	for (int i = 0; i < ai.size()-1; i++){
 	    /*
 ~~~~another way~~~~~
-	      if ((ai.get(i) == ai.get(i+1)){
+if ((ai.get(i) == ai.get(i+1)) || (ai.get(i) == ai.get(i-1))){
 		ai.remove(i);
-		i--;
 		  }
 	    */
 
-	    if ((ai.get(i) == ai.get(i+1)) || (ai.get(i) == ai.get(i-1))){
-		ai.remove(i);	
+	    if ((ai.get(i) == ai.get(i+1))){
+		ai.remove(i);
+		i--;	
 	    }
 	}	
 	System.out.println("w/out duplicates: " + ai);
