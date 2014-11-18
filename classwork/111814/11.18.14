@@ -1,0 +1,27 @@
+GRID ARRAY/ARRAYLISTS
+ ______________
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+|_|_|_|_|_|_|_|
+
+int[] a --> array of ints
+int[][] a --> array of an array of an int
+ex) a = new int[5][3] (array of 5x3)
+system.out.println(a.length) --> would print out 5
+system.out.println(a[0].length) --> would print out 3
+
+a[1][2] = 9
+a[4][1] = 2
+would return:
+000
+009
+000
+000
+020
+
+
+
+
