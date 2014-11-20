@@ -75,6 +75,10 @@ public class wordsearch {
 	}
     }
 
+    public void addwordV(String w, int row, int col){
+
+    }
+
     public static void main(String[] args) {
 	wordsearch w = new wordsearch();
 	System.out.println(w);
