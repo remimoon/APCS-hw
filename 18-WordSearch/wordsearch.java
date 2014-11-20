@@ -42,8 +42,9 @@ public class wordsearch {
 		col++;
 		result = true;
 	    } else {
-		if ((board[row][col] != '.' || board[row][col] == w.charAt(l))){
+		if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
 		result = false;
+		break;
 		}
 	    }
 	}
@@ -60,9 +61,9 @@ public class wordsearch {
 		System.out.println("error, overlaps wrong");
 	    } else { 
 	    if ((40 - col) < w.length()){ //reversing, if word goes off board
-		for (int i = w.length(); i > 0; i--){
-		    board[row][col] = w.charAt(i);
-		    col--;
+		for (int i = 0; i > w.length(); i++){
+		    board[row][col-w.length()] = reverse(w).charAt(i);
+		    col++;
 		}
 	    } else {
 		for (int i = 0; i < w.length(); i++){
@@ -78,8 +79,9 @@ public class wordsearch {
 	wordsearch w = new wordsearch();
 	System.out.println(w);
 	w.addwordH("hello",3,15); //should work 
-	//	w.addwordH("look",3,14); //test illegal overlap
-	w.addwordH("look",3,18); //test legal overlap				
+	w.addwordH("look",3,14); //test illegal overlap
+	w.addwordH("look",3,18); //test legal overlap	
+	//	w.addwordH("look",10,37); //test should go off board n reverse			
 	System.out.println(w);
     }
 
