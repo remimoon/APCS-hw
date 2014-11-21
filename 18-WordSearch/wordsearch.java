@@ -33,23 +33,39 @@ public class wordsearch {
         return reversedString;
     }
 
-    public boolean checkH(String w, int row, int col){
+    public boolean checkH(String w, int row, int col, boolean reverse){
 	int l = 0;
 	boolean result = true;
-	while (l < w.length()){
-	    if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
-		l++;
-		col++;
-		result = true;
-	    } else {
-		if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-		result = false;
-		break;
+	if (reverse == true){
+	    while (l < w.length()){
+		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+		    l++;
+		    col--;
+		    result = true;
+		} else {
+		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
+			result = false;
+			break;
+		    }
+		}
+	    }
+	} else {
+	    while (l < w.length()){
+		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+		    l++;
+		    col++;
+		    result = true;
+		} else {
+		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
+			result = false;
+			break;
+		    }
 		}
 	    }
 	}
-	return result;
+    return result;
     }
+
     
 
 
@@ -57,13 +73,17 @@ public class wordsearch {
 	if (row > 20 || col > 40){
 	    System.out.println("error, rows/col out of bound");
 	} else {
-	    if ( checkH(w,row,col) == false){
+	    if ( checkH(w,row,col,false) == false){
 		System.out.println("error, overlaps wrong");
 	    } else { 
-	    if ((40 - col) < w.length()){ //reversing, if word goes off board
-		for (int i = 0; i > w.length(); i++){
-		    board[row][col-w.length()] = reverse(w).charAt(i);
-		    col++;
+	    if ((40 - col) < w.length()){     //reversing, if word goes off board
+		if(checkH(w,row,col,true) == false){ 
+		    System.out.println("error overlaps wrong");
+		} else {
+		for (int i = w.length(); i > 0; i--){
+		    board[row][col] = w.charAt(i-1);
+		    col--;
+		}
 		}
 	    } else {
 		for (int i = 0; i < w.length(); i++){
@@ -75,9 +95,66 @@ public class wordsearch {
 	}
     }
 
-    public void addwordV(String w, int row, int col){
-
+ public boolean checkV(String w, int row, int col, boolean reverse){
+	int l = 0;
+	boolean result = true;
+	if (reverse == true){
+	    while (l < w.length()){
+		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+		    l++;
+		    row++;
+		    result = true;
+		} else {
+		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
+			result = false;
+			break;
+		    }
+		}
+	    }
+	} else {
+	    while (l < w.length()){
+		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+		    l++;
+		    row--;
+		    result = true;
+		} else {
+		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
+			result = false;
+			break;
+		    }
+		}
+	    }
+	}
+    return result;
     }
+
+    public void addwordV(String w, int row, int col){
+	if (row > 20 || col > 40){
+	    System.out.println("error, rows/col out of bound");
+	} else {
+	    if ( checkV(w,row,col,false) == false){
+		System.out.println("error, overlaps wrong");
+	    } else { 
+	    if ((40 - col) < w.length()){     //reversing, if word goes off board
+		if(checkH(w,row,col,true) == false){ 
+		    System.out.println("error overlaps wrong");
+		} else {
+		for (int i = w.length(); i > 0; i--){
+		    board[row][col] = w.charAt(i-1);
+		    row--;
+		}
+		}
+	    } else {
+		for (int i = 0; i < w.length(); i++){
+		    board[row][col] = w.charAt(i);
+		    row++;
+		}
+	    }
+	    }
+	}
+    }
+
+    
 
     public static void main(String[] args) {
 	wordsearch w = new wordsearch();
@@ -85,7 +162,10 @@ public class wordsearch {
 	w.addwordH("hello",3,15); //should work 
 	w.addwordH("look",3,14); //test illegal overlap
 	w.addwordH("look",3,18); //test legal overlap	
-	//	w.addwordH("look",10,37); //test should go off board n reverse			
+	//	w.addwordH("look",10,37); //test should go off board n reverse	
+	w.addwordV("hi",5,10); //should work
+	w.addwordH("hello",5,10); //legal overlap
+	//	w.addwordV("hey",19,5); //test should be out of bounds
 	System.out.println(w);
     }
 
