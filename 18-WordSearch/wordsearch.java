@@ -66,7 +66,22 @@ public class wordsearch {
     return result;
     }
 
-    
+   public void addwordHB(String w, int row, int col){
+	if (row > 20 || col > 40){
+	    System.out.println("error, rows/col out of bound");
+	} else {
+	    if ((40 - col) < w.length()){
+		if ( checkH(w,row,col,true) == false){
+		    System.out.println("error overlaps wrong");
+		} else {
+		    for (int i = w.length(); i > 0; i--){
+			board[row][col] = w.charAt(i-1);
+			col--;
+		    }
+		}
+	    }
+	}
+   }
 
 
     public void addwordH(String w, int row, int col){
@@ -75,22 +90,15 @@ public class wordsearch {
 	} else {
 	    if ( checkH(w,row,col,false) == false){
 		System.out.println("error, overlaps wrong");
-	    } else { 
-	    if ((40 - col) < w.length()){     //reversing, if word goes off board
-		if(checkH(w,row,col,true) == false){ 
-		    System.out.println("error overlaps wrong");
+	    }else{
+		if ((40 - col) < w.length()){     //reversing, if word goes off board
+		    addwordHB(w,row,col);
 		} else {
-		for (int i = w.length(); i > 0; i--){
-		    board[row][col] = w.charAt(i-1);
-		    col--;
+		    for (int i = 0; i < w.length(); i++){
+			board[row][col] = w.charAt(i);
+			col++;
+		    }
 		}
-		}
-	    } else {
-		for (int i = 0; i < w.length(); i++){
-		    board[row][col] = w.charAt(i);
-		    col++;
-		}
-	    }
 	    }
 	}
     }
@@ -128,6 +136,24 @@ public class wordsearch {
     return result;
     }
 
+
+ public void addwordVB(String w, int row, int col){
+	if (row > 20 || col > 40){
+	    System.out.println("error, rows/col out of bound");
+	} else {
+	    if ((20-row) < w.length()){
+		if ( checkH(w,row,col,true) == false){
+		    System.out.println("error overlaps wrong");
+		} else {
+		    for (int i = w.length(); i > 0; i--){
+			board[row][col] = w.charAt(i-1);
+			row--;
+		    }
+		}
+	    }
+	}
+   }
+
     public void addwordV(String w, int row, int col){
 	if (row > 20 || col > 40){
 	    System.out.println("error, rows/col out of bound");
@@ -135,26 +161,28 @@ public class wordsearch {
 	    if ( checkV(w,row,col,false) == false){
 		System.out.println("error, overlaps wrong");
 	    } else { 
-	    if ((40 - col) < w.length()){     //reversing, if word goes off board
-		if(checkH(w,row,col,true) == false){ 
-		    System.out.println("error overlaps wrong");
+		if ((20-row) < w.length()){     //reversing, if word goes off board
+		    addwordVB(w,row,col);
 		} else {
-		for (int i = w.length(); i > 0; i--){
-		    board[row][col] = w.charAt(i-1);
-		    row--;
+		    for (int i = 0; i < w.length(); i++){
+			board[row][col] = w.charAt(i);
+			row++;
+		    }
 		}
-		}
-	    } else {
-		for (int i = 0; i < w.length(); i++){
-		    board[row][col] = w.charAt(i);
-		    row++;
-		}
-	    }
 	    }
 	}
     }
 
+    public boolean checkVD(String w, int row, int col, boolean RL){
+
+    }
     
+    //Diagonal Right to Left
+    public void addwordDRL(String w, int row, int col){
+	if (row > 20 || col > 40){
+	    System.out.print("error, rows/col out of bound");
+	} else {
+
 
     public static void main(String[] args) {
 	wordsearch w = new wordsearch();
@@ -162,10 +190,10 @@ public class wordsearch {
 	w.addwordH("hello",3,15); //should work 
 	w.addwordH("look",3,14); //test illegal overlap
 	w.addwordH("look",3,18); //test legal overlap	
-	//	w.addwordH("look",10,37); //test should go off board n reverse	
 	w.addwordV("hi",5,10); //should work
 	w.addwordH("hello",5,10); //legal overlap
 	//	w.addwordV("hey",19,5); //test should be out of bounds
+	//	w.addwordH("look",10,37); //test should go off board n reverse	
 	System.out.println(w);
     }
 
