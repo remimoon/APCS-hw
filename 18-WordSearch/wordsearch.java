@@ -368,6 +368,31 @@ public class wordsearch {
     public static void main(String[] args) {
 	wordsearch w = new wordsearch();
 	System.out.println(w);
+
+	try {
+	    Scanner sc = new Scanner(new File("words.txt"));
+	
+	    while (sc.hasNext()){
+		String s = sc.next();
+		while (addWord(s) == false){
+		    if (addWord(s) == false){
+		    addWord(s);
+		    } else {
+w.addword
+		
+		System.out.println("Next line: " + s);
+	    }
+	}catch (Exception e) {
+	    System.out.println("File not found");
+	    System.exit(0);
+	}
+    }
+}
+
+
+
+
+
 	w.addwordH("hello",3,15); //should work 
 	//	w.addwordH("look",3,14); //test illegal overlap
 	w.addwordH("look",3,18); //test legal overlap	
