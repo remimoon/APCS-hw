@@ -362,30 +362,73 @@ public class wordsearch {
   }
  
 
-
-    
-
-
-    public static void main(String[] args) {
-	wordsearch w = new wordsearch();
-	System.out.println(w);
-
-	try {
-	    Scanner sc = new Scanner(new File("words.txt"));
-
-	    while (sc.hasNext()){
-		String s = sc.next();
-		    w.addWord(s);
-	    }	    
-	    
-	}catch (Exception e) {
-	    System.out.println("File not found");
-	    System.exit(0);
-	}
-	System.out.println(w);
-
+    public String getWIP() {
+	return wordsInPuzzle.toString();
     }
+
+    private void makeKey(){
+	key = new char[board.length][board[0].length];
+	for (int i = 0; i < board.length; i++) {
+	    for (int j = 0; j < board[0].length; j++) {
+		key[i][j] = board[i][j];
+	    }
+	}
+    }
+
+
+    public void buildPuzzle(int numwords){
+/*
+loop
+take a random word out of the word list
+try to add it to the puzzle
+*/
+	wordsInPuzzle = new ArrayList<String>();
+	while (numwords > 0){
+	    int wordIndex = rnd.nextInt(words.size());
+	    String word = words.get(wordIndex);
+	    if (addWord(word)) {
+		numwords--;
+		words.remove(wordIndex);
+		wordsInPuzzle.add(word);
+	    }
+	}
+	makeKey();
+
+/* fill the rest of the board */
+	for (int i = 0; i < board.length; i++) {
+	    for (int j = 0; j < board[0].length; j++) {
+		if (board[i][j]=='.'){
+		    String letters = "abcdefghijklmnopqrstuvwxyz";
+		    char letter = letters.charAt(rnd.nextInt(letters.length()));
+		    board[i][j]=letter;
+		}
+	    }
+	}
+    }
+    
+    public String getKey() {
+	String s = "";
+	for (int i = 0; i < key.length; i++) {
+	    for (int j = 0; j < key[i].length; j++) {
+		s = s + key[i][j];
+	    }
+	    s = s + "\n";
+	}
+	return s;
+    }
+
+ public static void main(String[] args) {
+     WordSearch w = new WordSearch(20,40);
+     System.out.println(w);
+     w.buildPuzzle(10);
+     System.out.println(w);
+     System.out.println(w.getWIP());
+     System.out.println(w.getKey());
+ }
+
 }
+
+   
 
 
 
