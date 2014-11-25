@@ -353,10 +353,11 @@ public class wordsearch {
 	      }
 	  }
       }
+
       if (test.equals(board)){
 	  return false;
       } else {
-	  return true;
+	  return true;	  
       }
   }
  
@@ -371,28 +372,25 @@ public class wordsearch {
 
 	try {
 	    Scanner sc = new Scanner(new File("words.txt"));
-	
+
 	    while (sc.hasNext()){
 		String s = sc.next();
-		while (addWord(s) == false){
-		    if (addWord(s) == false){
-		    addWord(s);
-		    } else {
-w.addword
-		
-		System.out.println("Next line: " + s);
-	    }
+		    w.addWord(s);
+	    }	    
+	    
 	}catch (Exception e) {
 	    System.out.println("File not found");
 	    System.exit(0);
 	}
+	System.out.println(w);
+
     }
 }
 
 
 
 
-
+    /*
 	w.addwordH("hello",3,15); //should work 
 	//	w.addwordH("look",3,14); //test illegal overlap
 	w.addwordH("look",3,18); //test legal overlap	
@@ -406,4 +404,6 @@ w.addword
 	System.out.println(w);
     }
 
-}
+    */
+
+
