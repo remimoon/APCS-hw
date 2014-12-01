@@ -1,5 +1,5 @@
 public class SuperArray {
-    String[] data = new String [10];
+    static String[] data = new String [10];
     String last;
 
         // set up the initial instance variables
@@ -7,11 +7,12 @@ public class SuperArray {
 
 
 
-    public boolean add(String i){
+    public String[] add(String i){
         // adds an item to the end of the list, grow if needed
         // returns true
 	if (data.length > size()){
 	    data[size()] = i;
+	    return Order(data);
 	}
 	else{
 	    String[] added = new String[data.length+1];
@@ -19,12 +20,12 @@ public class SuperArray {
 		added[index] = data[index];
 	    }
 	    added[added.length-1] = i;
+	    return Order(added);
 	}
-	return true;
     }
 
 
-    public boolean add(int index, String i){
+    /*   public boolean add(int index, String i){
         // adds item i  at index, shifting everything down as needed.
         // also grows as needed
 	 int x = data.length;
@@ -49,7 +50,7 @@ public class SuperArray {
 	}
 	return true;
     }
-
+    */
 
     public int size() {
         // returns the number of items in the list (not the array size)
@@ -89,7 +90,24 @@ public class SuperArray {
     }
     */
 
-    public String set(int index, String i){
+
+
+    public static String[] Order(String[] x){
+	String [] ordered = new String[x.length];
+	for(int j=0; j < ordered.length; j++){
+	    for (int i=j+1 ; i < ordered.length + 1; i++){
+		if(x[i].compareTo(x[j]) < 0){
+		    String temp = x[j];
+		    x[j]= ordered[i];
+		    ordered[i]=temp;
+		}
+	    }
+	}
+	return ordered;
+    }
+    
+
+    public static String set(int index, String i){
         // sets the item at location index to value i
         // returns the old value.
 
@@ -146,5 +164,11 @@ public class SuperArray {
 
  public void niceError() {
         System.out.println("nice error message :)");
+    }
+
+    public static void main (String[]args){
+	String[] x = {"hey","crash","sort","cat","mom","math","error","compsci"};
+        System.out.println(Order(x));
+	//	System.out.println(x.add("add"));
     }
 }
