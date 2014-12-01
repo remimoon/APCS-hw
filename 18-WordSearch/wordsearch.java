@@ -2,13 +2,33 @@ import java.io.*;
 import java.util.*;
 
 public class wordsearch {
-    private char[][] board;
+
+ private char[][] board,key;
+		private ArrayList<String> words;
+		private ArrayList<String> wordsInPuzzle;
+
+
 
     public wordsearch(int r, int c){
+	words = new ArrayList<String>();
+
+	Scanner sc = null;
+
+	try {
+	    sc = new Scanner(new File("words.txt"));
+	} catch (Exception e) {
+	    System.out.println("Can't open wordlist");
+	    System.exit(0);
+	}
+
+	while (sc.hasNext()){
+	    words.add(sc.next());
+	}
+
 	board = new char[r][c];
-	for (int i = 0; i < board.length; i++){
-	    for (int j = 0; j < board[i].length; j++){
-		board[i][j] ='.';
+	for (int i = 0; i < board.length; i++) {
+	    for (int j = 0; j < board[i].length; j++) {
+		board[i][j]='.';
 	    }
 	}
     }
@@ -28,6 +48,7 @@ public class wordsearch {
 	return s;
     }
 
+    /*
   public String reverse(String s) {
         String reversedString = "";
         for(int i=s.length(); i>0; i--) {
@@ -36,47 +57,45 @@ public class wordsearch {
         return reversedString;
     }
 
-    public boolean checkH(String w, int row, int col, boolean reverse){
+       public boolean checkH(String w, int row, int col, boolean reverse){
 	int l = 0;
 	boolean result = true;
 	if (reverse == true){
 	    while (l < w.length()){
-		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+		while (result != false){
+		if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+		    result = false;
+		} else {
 		    l++;
 		    col--;
 		    result = true;
-		} else {
-		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-			result = false;
-			break;
-		    }
+		}
 		}
 	    }
 	} else {
-	    while (l < w.length()){
-		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+	    while (result != false){
+		while (l < w.length()){
+		if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+		    result = false;
+		} else {
 		    l++;
 		    col++;
 		    result = true;
-		} else {
-		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-			result = false;
-			break;
-		    }
 		}
+	    }
 	    }
 	}
     return result;
     }
 
    public void addwordHB(String w, int row, int col){
-       if (row > 20 || col > 40){
+       if (row >  board.length || col >  board[0].length){
 	    System.out.println("error, rows/col out of bound");
 	} else {
 	    if ( checkH(w,row,col,true) == false){
 		System.out.println("error overlaps wrong");
 	    } else {
-	    if ((20-row) < w.length()){
+	    if (( board[0].length-row) < w.length()){
 		    System.out.println("error goes off board");
 		} else {
 		    for (int i = w.length(); i > 0; i--){
@@ -90,13 +109,13 @@ public class wordsearch {
 
 
     public void addwordH(String w, int row, int col){
-	if (row > 20 || col > 40){
+	if (row >  board.length || col >  board[0].length){
 	    System.out.println("error, rows/col out of bound");
 	} else {
 	    if ( checkH(w,row,col,false) == false){
 		System.out.println("error, overlaps wrong");
 	    }else{
-		if ((40 - col) < w.length()){   
+		if (( board[0].length - col) < w.length()){   
 		    System.out.println("error, goes off board");
 		} else {
 		    for (int i = 0; i < w.length(); i++){
@@ -112,44 +131,43 @@ public class wordsearch {
 	int l = 0;
 	boolean result = true;
 	if (reverse == true){
-	    while (l < w.length()){
-		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+	    while (result != false){
+
+		while (l < w.length()){
+		if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+		    result = false;
+		} else {
 		    l++;
 		    row++;
 		    result = true;
-		} else {
-		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-			result = false;
-			break;
-		    }
 		}
 	    }
+	    }
 	} else {
-	    while (l < w.length()){
-		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+	    while (result != false){
+		while (l < w.length()){
+		if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+		    result = false;
+		} else {
 		    l++;
 		    row--;
 		    result = true;
-		} else {
-		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-			result = false;
-			break;
-		    }
 		}
-	    }
+	     }
+	}
 	}
     return result;
-    }
+ }
 
 
  public void addwordVB(String w, int row, int col){
-	if (row > 20 || col > 40){
+	if (row >  board.length || col >  board[0].length){
 	    System.out.println("error, rows/col out of bound");
 	} else {
 	    if ( checkH(w,row,col,true) == false){
 		System.out.println("error overlaps wrong");
 	    } else {
-	    if ((20-row) < w.length()){
+	    if (( board.length - row) < w.length()){
 		    System.out.println("error goes off board");
 		} else {
 		    for (int i = w.length(); i > 0; i--){
@@ -162,13 +180,13 @@ public class wordsearch {
    }
 
     public void addwordV(String w, int row, int col){
-	if (row > 20 || col > 40){
+	if (row >  board.length || col >  board[0].length){
 	    System.out.println("error, rows/col out of bound");
 	} else {
 	    if ( checkV(w,row,col,false) == false){
 		System.out.println("error, overlaps wrong");
 	    } else { 
-		if ((20-row) < w.length()){   
+		if (( board.length-row) < w.length()){   
 		    System.out.println("error, goes off board");
 		} else {
 		    for (int i = 0; i < w.length(); i++){
@@ -186,68 +204,63 @@ public class wordsearch {
 	int l = 0;
 	boolean result = true;
 	if (RL == true && TB == true){
-	    while (l < w.length()){
-		if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+	    while (result != false){
+		while (l < w.length()){
+		if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+		    result = false;
+		} else {
 		    l++;
 		    row++;
 		    col--;
 		    result = true;
-		} else {
-		    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-			result = false;
-			break;
-		    }
 		}
+	     }	    
 	    }
 	} else {
 	    if (RL == true && TB == false){
-		while (l < w.length()){
-		    if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+		while (result != false){
+		    while (l < w.length()){
+		    if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+			result = false;
+		    } else {
 			l++;
 			row--;
 			col--;
 			result = true;
-		} else {
-			if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-			    result = false;
-			    break;
-			}
 		    }
+		}
 		}
 	    } else {
 		if (RL == false && TB == true){
-		    while (l < w.length()){
-			if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+		    while (result != false){
+			while (l < w.length()){
+			if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+			    result = false;
+			} else {
 			    l++;
 			    row++;
 			    col++;
 			    result = true;
-			} else {
-			    if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-				result = false;
-				break;
-			    }
 			}
+		    }
 		    }
 		} else {
 		    if (RL == false && TB == false){
-			while (l < w.length()){
-			    if ((board[row][col] == '.') || (board[row][col] == w.charAt(l))){
+			while (result != false){
+			    while (l < w.length()){
+			    if (board[row][col]!='.' && board[row][col]!=w.charAt(l)){
+				result = false;
+			    } else {
 				l++;
 				row--;
 				col++;
-				result = true;
-			    } else {
-				if ((board[row][col] != '.' || board[row][col] != w.charAt(l))){
-				    result = false;
-				    break;
-				}
+			    }
 			    }
 			}
 		    }
 		}
 	    }
-	}
+	}  	
     return result;
     }
 	
@@ -256,11 +269,11 @@ public class wordsearch {
     
     //Diagonal Right to Left
     public void addwordDRL(String w, int row, int col, boolean TB){
-	if (row > 20 || col > 40){
+	if (row >  board.length || col >  board[0].length){
 	    System.out.print("error, rows/col out of bound");
 	} else {
 	    if (TB == true){
-		if ((40-col) < w.length() || (20-row)< w.length()){
+		if ((board[0].length-col) < w.length() || ( board.length-row)< w.length()){
 		    if (checkD(w, row, col, true, true) == false){
 			System.out.println("error overlaps wrong");
 		    } else {
@@ -287,11 +300,11 @@ public class wordsearch {
 	    
   //Diagonal Left to Right
     public void addwordDLR(String w, int row, int col, boolean TB){
-	if (row > 20 || col > 40){
+	if (row >  board.length || col >  board[0].length){
 	    System.out.print("error, rows/col out of bound");
 	} else {
 	    if (TB == true){
-		if ((40-col) < w.length() || (20-row)< w.length()){
+		if (( board[0].length-col) < w.length() || ( board.length-row)< w.length()){
 		    if (checkD(w, row, col, false, true) == false){
 			System.out.println("error overlaps wrong");
 		    } else {
@@ -317,11 +330,11 @@ public class wordsearch {
     }
 
   public boolean addWord(String w){
-      Random r = new Random();
+      rnd = new Random();
       char[][] test = board;
-      int x = r.nextInt(board[0].length);
-      int y = r.nextInt(board.length);
-      int shuffle = r.nextInt(8);
+      int x = rnd.nextInt(board[0].length);
+      int y = rnd.nextInt(board.length);
+      int shuffle = rnd.nextInt(8);
       if (shuffle == 0){
 	  addwordH(w,x,y);
       } else {
@@ -361,52 +374,19 @@ public class wordsearch {
       }
   }
  
+ */   
 
-    public String getWIP() {
-	return wordsInPuzzle.toString();
-    }
 
-    private void makeKey(){
+    private void makeKey() {
 	key = new char[board.length][board[0].length];
 	for (int i = 0; i < board.length; i++) {
-	    for (int j = 0; j < board[0].length; j++) {
-		key[i][j] = board[i][j];
+	    for (int j = 0; j < board[i].length; j++) {
+		key[i][j]=board[i][j];
 	    }
 	}
     }
-
-
-    public void buildPuzzle(int numwords){
-/*
-loop
-take a random word out of the word list
-try to add it to the puzzle
-*/
-	wordsInPuzzle = new ArrayList<String>();
-	while (numwords > 0){
-	    int wordIndex = rnd.nextInt(words.size());
-	    String word = words.get(wordIndex);
-	    if (addWord(word)) {
-		numwords--;
-		words.remove(wordIndex);
-		wordsInPuzzle.add(word);
-	    }
-	}
-	makeKey();
-
-/* fill the rest of the board */
-	for (int i = 0; i < board.length; i++) {
-	    for (int j = 0; j < board[0].length; j++) {
-		if (board[i][j]=='.'){
-		    String letters = "abcdefghijklmnopqrstuvwxyz";
-		    char letter = letters.charAt(rnd.nextInt(letters.length()));
-		    board[i][j]=letter;
-		}
-	    }
-	}
-    }
-    
-    public String getKey() {
+	
+    public String getKey(){
 	String s = "";
 	for (int i = 0; i < key.length; i++) {
 	    for (int j = 0; j < key[i].length; j++) {
@@ -416,37 +396,82 @@ try to add it to the puzzle
 	}
 	return s;
     }
+    	
+    public boolean addWordHelper(String w,int row, int col,int deltaRow, int deltaCol){
+	int r = row, c = col;
+				
+	for (int i=0;i<w.length();i++){
+	    try {
+		if (board[r][c]!='.' && board[r][c]!=w.charAt(i)){
+		    return false;
+		}
+	    } catch ( Exception e){
+		return false;
+	    }
+	    r = r + deltaRow;
+	    c = c + deltaCol;
+	}
+	r = row;
+	c = col;
 
- public static void main(String[] args) {
-     WordSearch w = new WordSearch(20,40);
-     System.out.println(w);
-     w.buildPuzzle(10);
-     System.out.println(w);
-     System.out.println(w.getWIP());
-     System.out.println(w.getKey());
- }
-
-}
-
-   
-
-
-
-
-    /*
-	w.addwordH("hello",3,15); //should work 
-	//	w.addwordH("look",3,14); //test illegal overlap
-	w.addwordH("look",3,18); //test legal overlap	
-	w.addwordV("hi",5,10); //should work
-	w.addwordH("hello",5,10); //legal overlap
-	w.addwordVB("corn",7,35);
-	w.addwordDRL("muffin",15,30,false);
-	w.addwordDLR("hi",2,2,false);
-	//	w.addwordV("hey",19,5); //test should be out of bounds
-	//	w.addwordH("look",10,37); //test should go off board n reverse	
-	System.out.println(w);
+	for (int i=0;i<w.length();i++){
+	    board[r][c] = w.charAt(i);
+	    r = r + deltaRow;
+	    c = c + deltaCol;
+	}
+	return true;
     }
 
-    */
+    public boolean addWord(String w) {
+	Random rnd = new Random();
+	int row = rnd.nextInt(board.length);
+	int col = rnd.nextInt(board[0].length);
+	int deltaRow = -1 + rnd.nextInt(3);
+	int deltaCol = -1 + rnd.nextInt(3);
 
+	if (deltaRow == 0 && deltaCol == 0){
+	    return false;
+	}
+	return addWordHelper(w,row,col,deltaRow,deltaCol);
 
+    }
+
+    public void buildPuzzle(int numwords){
+	Random rnd = new Random();
+	words = new ArrayList<String>();
+	int i = 0;
+	while (i<numwords) {
+	    int wordIndex = rnd.nextInt(words.size());
+	    String word = words.get(wordIndex);
+	    if (addWord(word)){
+		wordsInPuzzle.add(word);
+		words.remove(wordIndex);
+		i++;
+	    }
+	}
+
+	makeKey();
+
+	for (i = 0; i < board.length; i++) {
+	    for (int j = 0; j < board[0].length; j++) {
+		if (board[i][j]=='.'){										
+		    String letters = "abcdefghijklmnopqrstuvwxyz";
+		    board[i][j] = letters.charAt(rnd.nextInt(letters.length()));
+		}
+	    }
+	}
+    }
+    
+    public String getWords() {
+	return ""+wordsInPuzzle;
+    }
+
+    public static void main(String[] args) {
+	Random rnd = new Random();
+	wordsearch w = new wordsearch(rnd.nextInt(30),rnd.nextInt(50));
+	System.out.println(w);
+	w.buildPuzzle(25);
+	System.out.println(w);
+	System.out.println(w.getKey());
+    }
+}
