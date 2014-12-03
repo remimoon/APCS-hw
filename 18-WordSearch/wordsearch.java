@@ -3,14 +3,14 @@ import java.util.*;
 
 public class wordsearch {
 
- private char[][] board,key;
-		private ArrayList<String> words;
-		private ArrayList<String> wordsInPuzzle;
+    private static char[][] board,key;
+    private static ArrayList<String> wordsList;
+    private static ArrayList<String> wordsUsed;
 
 
 
     public wordsearch(int r, int c){
-	words = new ArrayList<String>();
+	wordsList = new ArrayList<String>();
 
 	Scanner sc = null;
 
@@ -22,7 +22,7 @@ public class wordsearch {
 	}
 
 	while (sc.hasNext()){
-	    words.add(sc.next());
+	    wordsList.add(sc.next());
 	}
 
 	board = new char[r][c];
@@ -37,7 +37,7 @@ public class wordsearch {
 	this(20,40);
     }
 
-    public String toString(){
+    public  String toString(){
 	String s = "";
 	for (int i = 0; i < board.length; i++){
 	    for (int j = 0; j < board[i].length; j++){
@@ -377,7 +377,7 @@ public class wordsearch {
  */   
 
 
-    private void makeKey() {
+    private static void makeKey() {
 	key = new char[board.length][board[0].length];
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[i].length; j++) {
@@ -385,19 +385,9 @@ public class wordsearch {
 	    }
 	}
     }
-	
-    public String getKey(){
-	String s = "";
-	for (int i = 0; i < key.length; i++) {
-	    for (int j = 0; j < key[i].length; j++) {
-		s = s + key[i][j];
-	    }
-	    s = s + "\n";
-	}
-	return s;
-    }
+
     	
-    public boolean addWordHelper(String w,int row, int col,int deltaRow, int deltaCol){
+    public static boolean addWordHelper(String w,int row, int col,int deltaRow, int deltaCol){
 	int r = row, c = col;
 				
 	for (int i=0;i<w.length();i++){
@@ -422,56 +412,48 @@ public class wordsearch {
 	return true;
     }
 
-    public boolean addWord(String w) {
-	Random rnd = new Random();
-	int row = rnd.nextInt(board.length);
-	int col = rnd.nextInt(board[0].length);
-	int deltaRow = -1 + rnd.nextInt(3);
-	int deltaCol = -1 + rnd.nextInt(3);
-
-	if (deltaRow == 0 && deltaCol == 0){
+    public static boolean addWord(String w){
+	Random r = new Random();
+	int randomc = r.nextInt(board[0].length);
+	int randomr = r.nextInt(board.length);
+	int deltaRow = -1 + r.nextInt(3);
+	int deltaCol = -1 + r.nextInt(3);
+	if (deltaRow == deltaCol && deltaCol == 0) {
 	    return false;
 	}
-	return addWordHelper(w,row,col,deltaRow,deltaCol);
-
+	w = w.toUpperCase();
+	return addWordHelper(w,randomr,randomc,deltaRow,deltaCol);
     }
 
-    public void buildPuzzle(int numwords){
-	Random rnd = new Random();
-	words = new ArrayList<String>();
+    public static void buildPuzzle(){
 	int i = 0;
-	while (i<numwords) {
-	    int wordIndex = rnd.nextInt(words.size());
-	    String word = words.get(wordIndex);
-	    if (addWord(word)){
-		wordsInPuzzle.add(word);
-		words.remove(wordIndex);
-		i++;
-	    }
+	while (i<wordsList.size()) {
+	    String word = wordsList.get(i);
+	    addWord(word);
+	    i++;
 	}
+    }
 
-	makeKey();
-
-	for (i = 0; i < board.length; i++) {
+    public static void fillup(){
+	Random rnd = new Random();
+	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[0].length; j++) {
-		if (board[i][j]=='.'){										
-		    String letters = "abcdefghijklmnopqrstuvwxyz";
+		if (board[i][j]=='.'){												    String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		    board[i][j] = letters.charAt(rnd.nextInt(letters.length()));
 		}
 	    }
 	}
     }
-    
-    public String getWords() {
-	return ""+wordsInPuzzle;
-    }
+
 
     public static void main(String[] args) {
 	Random rnd = new Random();
-	wordsearch w = new wordsearch(rnd.nextInt(30),rnd.nextInt(50));
+	wordsearch w = new wordsearch(20,30);
+	System.out.println("This is the key:");
+	w.buildPuzzle();
 	System.out.println(w);
-	w.buildPuzzle(25);
-	System.out.println(w);
-	System.out.println(w.getKey());
+	w.fillup();
+	System.out.println("This is the wordsearch:");
+	System.out.print(w);
     }
 }
