@@ -438,7 +438,8 @@ public class wordsearch {
 	Random rnd = new Random();
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[0].length; j++) {
-		if (board[i][j]=='.'){												    String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		if (board[i][j]=='.'){
+		    String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		    board[i][j] = letters.charAt(rnd.nextInt(letters.length()));
 		}
 	    }
