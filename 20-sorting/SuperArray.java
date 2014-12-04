@@ -6,11 +6,19 @@ public class SuperArray {
  
     public SuperArray() {
 	data = new String[10];
-	for (int i=0;i<10;i++) {
-	    data[i] = "";
-	}
+    } 
+
+    public SuperArray(int length){
+	data = new String[length];
     }
 
+    public String toString(){
+	String s = "";
+	for (int i = 0; i < data.length; i++) {
+	    s = s + data[i]+" ";
+	}
+	return s;
+    }
     public String[] getData(){
 	return data;
     }
