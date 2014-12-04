@@ -1,0 +1,17 @@
+OSA
+
+find + add (n+n -> 2n)
+comparison
+int i;
+for (i = last, a[i-1] > newval && i > 0; i--){
+a[i] = a[i-1];
+}
+a[i] = newval;
+}}}
+
+insertion sorting algorithm 
+1) n = 0
+2) make the array a[0] -> a[n]
+3) use shift code top move the item at a[n] into its proper place
+4)n = n+1
+5)repear 2 to 4
