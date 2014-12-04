@@ -1,16 +1,20 @@
 public class OSA extends SuperArray{
 
+  public OSA(){
+	super();
+    }
 
-    
-    public boolean add(String i){
 
-	
-		}
+    public boolean add(String w){
+	int i = getData().length;
+	int place = i;
+	for (int j = 0; j < i; j ++){
+	    if (getData()[j] == null || w.compareTo(getData()[j]) <= 0) {
+		place = j;
+		break;
 	    }
 	}
-
-     System.out.print(Array[j]);
- }
+	super.add(place, w);
+	return true;
+    }
 }
-
-http://stackoverflow.com/questions/12986386/sorting-an-array-of-strings-with-java
