@@ -114,18 +114,14 @@ public class SuperArray {
 	return old;
     }
 
-  public void shift(String newvalue){
-	getLast();
-	int i;
-	for (i = last; i > 0 && newvalue.compareTo(data[i-1]) < 0 ; i--) {
-	    data[i] = data[i-1];
-	}
-	data[i]=newvalue;
-    }
-
    public void isort() {
-      for (int i = 0; i < data.length; i++) {
-	  shift(get(i));
+       int j;
+      for (int i = 1; i < data.length; i++) {
+	  String old = data[i];
+	  for (j = i-1; j >= 0 && old.compareTo(data[j]) < 0; j++) {
+	      data[j+1] = data[j];
+	  }
+	  data[j+1] = tmp;
       }
    }
 
