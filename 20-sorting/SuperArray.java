@@ -124,7 +124,7 @@ public class SuperArray {
     }
 
    public void isort() {
-      for (int i = 0; i < size(); i++) {
+      for (int i = 0; i < data.length; i++) {
 	  shift(get(i));
       }
    }
