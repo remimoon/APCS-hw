@@ -1,5 +1,5 @@
 public class SuperArray {
-    static String[] data;
+    String[] data;
     int last;
 
         // set up the initial instance variables
@@ -68,16 +68,6 @@ public class SuperArray {
     }
 
 
-    public void shift(String newvalue){
-	getLast();
-	int i;
-	for (i = last; i > 0 && newvalue.compareTo(data[i-1]) < 0 ; i--) {
-	    data[i] = data[i-1];
-	}
-	data[i]=newvalue;
-    }
-
-
     public int size() {
         // returns the number of items in the list (not the array size)
 	int count = 0;
@@ -99,24 +89,7 @@ public class SuperArray {
             return data[index];
         }
 
-
-
-    public static String[] Order(String[] x){
-	String [] ordered = new String[x.length];
-	for(int j=0; j < ordered.length; j++){
-	    for (int i=j+1 ; i < ordered.length + 1; i++){
-		if(x[i].compareTo(x[j]) < 0){
-		    String temp = x[j];
-		    x[j]= ordered[i];
-		    ordered[i]=temp;
-		}
-	    }
-	}
-	return ordered;
-    }
-    
-
-    public static String set(int index, String i){
+    public String set(int index, String i){
         // sets the item at location index to value i
         // returns the old value.
 
@@ -141,10 +114,69 @@ public class SuperArray {
 	return old;
     }
 
+  public void shift(String newvalue){
+	getLast();
+	int i;
+	for (i = last; i > 0 && newvalue.compareTo(data[i-1]) < 0 ; i--) {
+	    data[i] = data[i-1];
+	}
+	data[i]=newvalue;
+    }
+
    public void isort() {
       for (int i = 0; i < size(); i++) {
 	  shift(get(i));
       }
    }
+
+   public int smallestind(int start){
+       int ind = 0;
+	for (int i = start; i < data.length - 1; i ++){
+	    if (data[i].compareTo(data[i+1]) < 0){
+		    ind = i;
+		}
+		    ind = i + 1;
+	}		
+	return ind;
+   }
+		
+
+    public void ssort(){
+	for (int i = 0; i < data.length; i++){
+	    if (smallestind(i) != i){
+		String old = data[i];
+		data[i] = data[smallestind(i)];
+		data[smallestind(i)] = old;
+	    }
+	}
+    }
+
+
+    public void bubble(){
+	for (int i = 0; i < data.length; i++){
+	    if (data[i].compareTo(data[i+1]) > 0){
+		String old = data[i];
+		data[i] = data[i+1];
+		data[i+1] = old;
+	    }
+	}
+    }
+
+    public boolean isItSorted(){
+	boolean result = false;
+	for (int i = 0; i < data.length - 1; i++){
+	    if (data[i].compareTo(data[i+1]) < 0){
+		result = true;
+	    }
+	}
+	return result;
+    }
+
+    public void bsort(){
+	while (isItSorted() == false){
+	    bubble();
+	}
+    }
+
 
 }

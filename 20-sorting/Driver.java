@@ -13,7 +13,11 @@ public class Driver{
 
 	System.out.println("Original: " + s.toString() + "\n");
  
-	s.isort();
-	System.out.println("isort: " + s.toString + "\n");
+	//	s.isort();
+
+	//	System.out.println("isort: " + s.toString() + "\n");
+
+	//	s.ssort();
+	//	System.out.println ("ssort: " + s.toString() + "\n");
     }
 }
