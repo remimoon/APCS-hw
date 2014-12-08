@@ -1,0 +1,10 @@
+sorting with location
+ex)
+location: 0  1  2  3  4  5  6  7
+value:    12 5  7  3  9  2  6  4
+1. look at location 0
+2. find the smallest value between a[0] and end
+3. swap a[i] with a[smallest number index]
+4. i++
+
+

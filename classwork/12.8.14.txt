@@ -1,0 +1,17 @@
+selection sort --> n^2
+insertion sort --> n^2
+
+compare # of comparisons and # of assignments
+
+compare # of different types of data sets
+
+readme.md --> what you discover
+
+built in sort
+-assumes array is full
+-no nulls
+Arrays.sort(array);
+
+-if you want to sort only part of the array
+Arrays.sort(data,start,stop);
+-Which will sort from start(inclusive) to stop (exclusive)
