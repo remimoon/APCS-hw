@@ -1,0 +1,23 @@
+
+public class Interval {
+
+    public int low,high;
+    private Random r = new Random();
+
+    private void setup(int l, int h){
+	high = h;
+	low = l;
+    }
+    public Interval(){
+	int l = r.nextInt(100);
+	int h = l + r.nextInt(100) + 1;
+	setup(l,h);
+    }
+
+    public Interval(int l, int h){
+	setup(l,h);
+    }
+    public static void main (String[] args){
+
+    }
+}
