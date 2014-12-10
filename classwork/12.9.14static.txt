@@ -2,3 +2,5 @@ Static --> belongs to the class rather than a specific instance
 ex) math.sqrt
 
 a static variable also belongs to the class, its shared by all instances
+
+

@@ -1,0 +1,14 @@
+12/10/14
+Interfaces
+-> a contract (in java) that specifies that a class will implement certain methods with certain signatures
+
+interface name {
+ method 1_signature 1;
+ method 2_signature 2;
+etc 
+}
+
+method signature is: public/private return_type name (params)
+
+ex)
+
