@@ -8,8 +8,8 @@ public class Interval {
     private static int numIntervals = 0;
 
     private void setup(int l, int h){
-	high = h;
-	low = l;
+	this.high = h;
+	this.low = l;
 	numIntervals = numIntervals + 1;
     //if numIntervals not static, would not return as 1,2,3 but more as 1,1,1
 
@@ -35,12 +35,21 @@ public class Interval {
 	System.out.println("stuff");
     }
 
+    public int compareTo(Interval other){
+	int result = this.low - other.low;
+	if (result == 0) {
+	    result = this.high - other.high;
+	}
+	return result;	
+    }
+
     public static void main (String[] args){
-	for (int i = 0; i < 10; i++){
+	/*	for (int i = 0; i < 10; i++){
 	    System.out.println(new Interval());
 	}
 
-	/*	stuff();
+
+        	stuff();
  works because stuff() is static and belongs to class so we can call without Interval.__ because we are in that class
 
 	Interval x = new Interval();
@@ -48,9 +57,9 @@ public class Interval {
 	*/
 
 	Interval [] a = new Interval[10];
-	for (int j = 0; j < 10; j++){
+	for (int j = 0; j < a.length; j++){
 	    a[j] = new Interval();
 	}
-	return a;
+	System.out.println(Arrays.toString(a));
     }
 }
