@@ -11,4 +11,16 @@ etc
 method signature is: public/private return_type name (params)
 
 ex)
+interface Comparable {
+bla
+}
+
+
+to implement an interface use "implements":
+ex) 
+class myClass implements Comparable{
+// class definitions
+}
+
+A class can only extend one class, but can implement multiple interfaces
 
