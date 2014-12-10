@@ -1,15 +1,15 @@
 import java.util.*;
 import java.util.*;
 
-public class Interval {
+public class Interval implements Comparable {
 
     public int low,high;
     private static Random r = new Random();
     private static int numIntervals = 0;
 
     private void setup(int l, int h){
-	this.high = h;
-	this.low = l;
+	high = h;
+	low = l;
 	numIntervals = numIntervals + 1;
     //if numIntervals not static, would not return as 1,2,3 but more as 1,1,1
 
@@ -36,6 +36,7 @@ public class Interval {
     }
 
     public int compareTo(Interval other){
+	Interval o = (Interval)other;
 	int result = this.low - other.low;
 	if (result == 0) {
 	    result = this.high - other.high;
