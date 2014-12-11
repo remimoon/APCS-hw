@@ -1,0 +1,13 @@
+Searching
+
+private Mage[] a;
+
+public Mage search(String s){
+
+loop through
+if we find it, return s
+if we don't, return null
+
+Linear Search
+Binary Search (only for already sorted)
+
