@@ -1,4 +1,8 @@
-public class Ninja extends Basechar {
+import java.util.*;
+import java.util.*;
+
+
+public class Ninja extends Basechar implements Comparable {
 	// Ninja-specific variables
 	private int stars, katana;
 	
@@ -78,4 +82,20 @@ public class Ninja extends Basechar {
     	}
     	return -1;
     }
+
+  public int compareTo(Object other) {
+        Ninja a = (Ninja) other;
+        return this.toString().compareTo(a.toString());
+    }
+
+   public static void main(String[] args) {
+        Ninja a = new Ninja("A");
+        Ninja b = new Ninja("B");
+	Ninja c = new Ninja("C");
+        Ninja[] array = {b, a, c};
+        System.out.println(Arrays.toString(array));
+        Arrays.sort(array);
+        System.out.println(Arrays.toString(array));
+    }
+
 }
