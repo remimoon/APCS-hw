@@ -1,0 +1,22 @@
+Remi Moon
+1/13/15
+
+https://github.com/Revalucien/apcsfinal_fall
+
+General: Comment each function so that it is clear what they are doing
+
+MPanel.java
+lines 78-81 : When you run the program, terminal only prints out 0 for top, left, right, and bottom insets
+
+lines 84-89: Why is there all this rotating going on? Makes code kind of clustered and tedious
+
+line 101-103: What is this.gfx.setColor(Color.black) do, especially after this.gfx.setColor(Color.white)
+
+MWindow
+-Make various comments explaining the math behind the code
+
+-how are you going to implement the predicted price to the graph?
+
+line 50: for computeGradientDescent maybe break up the function into many functions, and name each a name that shows what the function is doing
+
+line 164+: it’s smart showing each step being done and what is given for each step, but I am not sure how you are going to make it a price predictor using a graph
