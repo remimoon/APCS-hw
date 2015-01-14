@@ -12,6 +12,8 @@ lines 84-89: Why is there all this rotating going on? Makes code kind of cluster
 
 line 101-103: What is this.gfx.setColor(Color.black) do, especially after this.gfx.setColor(Color.white)
 
+108: what will drawPoint do?
+
 MWindow
 -Make various comments explaining the math behind the code
 
