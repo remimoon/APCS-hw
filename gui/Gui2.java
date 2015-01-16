@@ -9,7 +9,18 @@ public class Gui2 extends JFrame implements ActionListener {
     private JLabel label;
     private JTextArea text;
     private JPanel canvas;
+    private JCheckBox box;
 
+
+    private class Key implements KeyListener {
+	public void keyPressed(KeyEvent e){
+	System.out.println(e);
+	System.out.println();
+	}
+	public void keyReleased(KeyEvent e){}
+	public void keyTyped(KeyEvent e){}
+
+    }
     public void actionPerformed(ActionEvent e){
 	if(e.getSource() == b1){
 	    System.out.println("you clicked click me");
@@ -42,10 +53,12 @@ public class Gui2 extends JFrame implements ActionListener {
 	label = new JLabel("The Label:");
 	pane.add(label);
 
+	box = new JCheckBox;
 	text =new JTextArea();
 	text.setColumns(40);
 	text.setRows(5);
 	text.setBorder(BorderFactory.createLineBorder(Color.red,2));
+	text.addKeyListener(new Key());
 	pane.add(text);
 
 	canvas = new JPanel();
